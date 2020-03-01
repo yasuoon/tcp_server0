@@ -9,6 +9,7 @@ defmodule TcpServer0.Application do
     children = [
       # Starts a worker by calling: TcpServer0.Worker.start_link(arg)
       # {TcpServer0.Worker, arg}
+      {AppState, 55},
       {Task.Supervisor, name: TcpEchoServer.TaskSupervisor},
       Supervisor.child_spec({Task, fn -> TcpEchoServer.start() end},
         restart: :permanent)
